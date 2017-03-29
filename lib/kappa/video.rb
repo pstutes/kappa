@@ -1,7 +1,7 @@
 require 'cgi'
 require 'time'
 
-module Twitch::V2
+module Twitch::V5
   # @private
   class ChannelProxy
     def initialize(name, display_name, query)

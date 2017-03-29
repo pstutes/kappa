@@ -125,15 +125,15 @@ module Twitch
     end
 
   private
-    DEFAULT_BASE_URL = 'https://api.twitch.tv/kraken/'
+    DEFAULT_BASE_URL = 'https://api.twitch.tv/kraken/'.freeze
   end
 end
 
-module Twitch::V2
+module Twitch::V5
   # @private
   class Connection < Twitch::Connection
     def headers
-      { 'Accept' => 'application/vnd.twitchtv.v2+json' }
+      { 'Accept' => 'application/vnd.twitchtv.v5+json' }
     end
   end
 end

@@ -1,7 +1,7 @@
 require 'cgi'
 require 'time'
 
-module Twitch::V2
+module Twitch::V5
   # Channels serve as the home location for a user's content. Channels have a stream, can run
   # commercials, store videos, display information and status, and have a customized page including
   # banners and backgrounds.
@@ -83,9 +83,9 @@ module Twitch::V2
     # @return [Array<User>] Users following this channel, if no block is given.
     # @return [nil] If a block is given.
     def followers(options = {}, &block)
-      name = CGI.escape(@name)
+      name = CGI.escape(@id)
       return @query.connection.accumulate(
-        :path => "channels/#{name}/follows",
+        :path => "channels/#{id}/follows",
         :json => 'follows',
         :sub_json => 'user',
         :create => -> hash { User.new(hash, @query) },
@@ -104,7 +104,7 @@ module Twitch::V2
     #   channel.videos(:type => :highlights) do |video|
     #     next if video.view_count < 10000
     #     puts video.url
-    #   end 
+    #   end
     # @param options [Hash] Filter criteria.
     # @option options [Symbol] :type (:highlights) The type of videos to return. Valid values are `:broadcasts`, `:highlights`.
     # @option options [Fixnum] :limit (nil) Limit on the number of results returned.
@@ -118,7 +118,7 @@ module Twitch::V2
     # @return [Array<Video>] Videos for the channel, if no block is given.
     # @return [nil] If a block is given.
     def videos(options = {}, &block)
-      @query.videos.for_channel(@name, options, &block)
+      @query.videos.for_channel(@id, options, &block)
     end
 
     # @example
@@ -204,9 +204,14 @@ module Twitch::V2
     def get(channel_name)
       name = CGI.escape(channel_name)
 
+      query = { login: name }
+      user_json = @query.connection.get('users', query)
+      userhash = user_json['users'][0]
+      id = userhash['_id']
+
       # HTTP 422 can happen if the channel is associated with a Justin.tv account.
       Twitch::Status.map(404 => nil, 422 => nil) do
-        json = @query.connection.get("channels/#{name}")
+        json = @query.connection.get("channels/#{id}")
         Channel.new(json, @query)
       end
     end

@@ -1,7 +1,7 @@
 require 'cgi'
 require 'time'
 
-module Twitch::V2
+module Twitch::V5
   # Teams are an organization of channels.
   # @see Teams#get Teams#get
   # @see Teams#all Teams#all
@@ -9,7 +9,7 @@ module Twitch::V2
   # @see Channel
   class Team
     include Twitch::IdEquality
-    
+
     # @private
     def initialize(hash)
       @id = hash['_id']

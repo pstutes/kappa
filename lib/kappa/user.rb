@@ -1,7 +1,7 @@
 require 'cgi'
 require 'time'
 
-module Twitch::V2
+module Twitch::V5
   # These are members of the Twitch community who have a Twitch account. If broadcasting,
   # they can own a stream that they can broadcast on their channel. If mainly viewing,
   # they might follow or subscribe to channels.
@@ -104,7 +104,7 @@ module Twitch::V2
     end
 
     # @example
-    #   23945610 
+    #   23945610
     # @return [Fixnum] Unique Twitch ID.
     attr_reader :id
 
