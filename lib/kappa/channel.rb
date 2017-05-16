@@ -28,12 +28,6 @@ module Twitch::V5
       @updated_at = Time.parse(hash['updated_at']).utc
       @url = hash['url']
       @video_banner_url = hash['video_banner']
-
-      @teams = []
-      teams = hash['teams']
-      teams.each do |team_json|
-        @teams << Team.new(team_json)
-      end
     end
 
     # Does this channel have mature content? This flag is specified by the owner of the channel.
