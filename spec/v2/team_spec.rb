@@ -4,9 +4,9 @@ require 'kappa'
 require 'common'
 require 'uri'
 
-include Twitch::V2
+include Twitch::V5
 
-describe Twitch::V2::Team do
+describe Twitch::V5::Team do
   before do
     WebMocks.load_dir(fixture('team'))
   end
@@ -47,7 +47,7 @@ describe Twitch::V2::Team do
   end
 end
 
-describe Twitch::V2::Teams do
+describe Twitch::V5::Teams do
   before do
     WebMocks.load_dir(fixture('team'))
   end

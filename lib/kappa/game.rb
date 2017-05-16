@@ -1,4 +1,4 @@
-module Twitch::V2
+module Twitch::V5
   # Games are categories (e.g. League of Legends, Diablo 3) used by streams and channels.
   # Games can be searched for by query.
   # @see Games#top Games#top
@@ -61,7 +61,7 @@ module Twitch::V2
 
     # @example
     #   24024
-    # @return [Fixnum] Unique game ID for GiantBomb.com. 
+    # @return [Fixnum] Unique game ID for GiantBomb.com.
     attr_reader :giantbomb_id
 
     # @return [Images] Set of images for the game's box art.
@@ -108,7 +108,7 @@ module Twitch::V2
 
     # @example
     #   32697
-    # @return [Fixnum] Unique game ID for GiantBomb.com. 
+    # @return [Fixnum] Unique game ID for GiantBomb.com.
     attr_reader :giantbomb_id
 
     # @example
@@ -169,7 +169,7 @@ module Twitch::V2
         &block
       )
     end
-    
+
     # Get a list of games with names similar to the specified name.
     # @example
     #   Twitch.games.find(:name => 'diablo')

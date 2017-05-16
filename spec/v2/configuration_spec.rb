@@ -32,13 +32,13 @@ describe Twitch do
 
     it 'uses correct classes when #api is set' do
       Twitch.configure do |config|
-        config.api = Twitch::V2
+        config.api = Twitch::V5
       end
 
-      expect(Twitch.channels.class).to eq(Twitch::V2::Channels)
+      expect(Twitch.channels.class).to eq(Twitch::V5::Channels)
 
       c = Twitch.channels.get('giantwaffle')
-      expect(c.class).to eq(Twitch::V2::Channel)
+      expect(c.class).to eq(Twitch::V5::Channel)
     end
   end
 

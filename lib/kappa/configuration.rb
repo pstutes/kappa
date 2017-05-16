@@ -8,7 +8,7 @@ module Twitch
   # @example
   #   Twitch.configure do |config|
   #     config.client_id = 'sc2daily-v1.0.0'
-  #     config.api = Twitch::V2
+  #     config.api = Twitch::V5
   #   end
   #
   #   streams = Twitch.streams.featured(:limit => 10)
@@ -16,7 +16,7 @@ module Twitch
   #   you must specify a client ID for your application. If you do not specify a client ID,
   #   Twitch reserves the right to rate-limit your application without warning. If unspecified,
   #   this defaults to a random string, but in real applications, you should set this explicitly.
-  # @param api [Module] The version of the Twitch API to use. Defaults to `Twitch::V2`, the only
+  # @param api [Module] The version of the Twitch API to use. Defaults to `Twitch::V5`, the only
   #   API version currently supported.
   # @return [nil] nil
   def self.configure(&block)
@@ -41,7 +41,7 @@ module Twitch
   #   you must specify a client ID for your application. If you do not specify a client ID,
   #   Twitch reserves the right to rate-limit your application without warning. If unspecified,
   #   this defaults to a random string, but in real applications, you should set this explicitly.
-  # @param api [Module] The version of the Twitch API to use. Defaults to `Twitch::V2`, the only
+  # @param api [Module] The version of the Twitch API to use. Defaults to `Twitch::V5`, the only
   #   API version currently supported.
   # @return [Object] A Twitch query object through which you can make requests. The methods on this
   #   object are the same as the methods on the default `Twitch` object.
@@ -61,7 +61,7 @@ module Twitch
   # @private
   class Configuration
     def initialize
-      @api = Twitch::V2
+      @api = Twitch::V5
     end
 
     def client_id

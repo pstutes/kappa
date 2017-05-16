@@ -3,9 +3,9 @@ require 'yaml'
 require 'kappa'
 require 'common'
 
-include Twitch::V2
+include Twitch::V5
 
-describe Twitch::V2::Channel do
+describe Twitch::V5::Channel do
   before do
     WebMocks.load_dir(fixture('channel'))
   end
@@ -118,7 +118,7 @@ describe Twitch::V2::Channel do
   end
 end
 
-describe Twitch::V2::Channels do
+describe Twitch::V5::Channels do
   before do
     WebMocks.load_dir(fixture('channel'))
   end
@@ -126,7 +126,7 @@ describe Twitch::V2::Channels do
   after do
     WebMock.reset!
   end
- 
+
   describe '#get' do
     it 'creates a Channel from channel name' do
       c = Twitch.channels.get('colminigun')

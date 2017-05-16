@@ -1,7 +1,7 @@
 require 'cgi'
 require 'time'
 
-module Twitch::V2
+module Twitch::V5
   # Channels serve as the home location for a user's content. Channels have a stream, can run
   # commercials, store videos, display information and status, and have a customized page including
   # banners and backgrounds.
@@ -104,7 +104,7 @@ module Twitch::V2
     #   channel.videos(:type => :highlights) do |video|
     #     next if video.view_count < 10000
     #     puts video.url
-    #   end 
+    #   end
     # @param options [Hash] Filter criteria.
     # @option options [Symbol] :type (:highlights) The type of videos to return. Valid values are `:broadcasts`, `:highlights`.
     # @option options [Fixnum] :limit (nil) Limit on the number of results returned.

@@ -2,9 +2,9 @@ require 'rspec'
 require 'kappa'
 require 'common'
 
-include Twitch::V2
+include Twitch::V5
 
-describe Twitch::V2::User do
+describe Twitch::V5::User do
   before do
     WebMocks.load_dir(fixture('user'))
   end
@@ -151,7 +151,7 @@ describe Twitch::V2::User do
   end
 end
 
-describe Twitch::V2::Users do
+describe Twitch::V5::Users do
   before do
     WebMocks.load_dir(fixture('user'))
   end

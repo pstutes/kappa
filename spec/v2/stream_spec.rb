@@ -2,9 +2,9 @@ require 'rspec'
 require 'kappa'
 require 'common'
 
-include Twitch::V2
+include Twitch::V5
 
-describe Twitch::V2::Stream do
+describe Twitch::V5::Stream do
   before do
     WebMocks.load_dir(fixture('stream'))
   end
@@ -46,7 +46,7 @@ describe Twitch::V2::Stream do
   end
 end
 
-describe Twitch::V2::StreamSummary do
+describe Twitch::V5::StreamSummary do
   before do
     WebMocks.load_dir(fixture('stream'))
   end
@@ -65,7 +65,7 @@ describe Twitch::V2::StreamSummary do
   end
 end
 
-describe Twitch::V2::Streams do
+describe Twitch::V5::Streams do
   before do
     WebMocks.load_dir(fixture('stream'))
   end

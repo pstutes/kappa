@@ -3,9 +3,9 @@ require 'webmock/rspec'
 require 'kappa'
 require 'common'
 
-include Twitch::V2
+include Twitch::V5
 
-describe Twitch::V2::Video do
+describe Twitch::V5::Video do
   before do
     WebMocks.load_dir(fixture('video'))
   end
@@ -64,7 +64,7 @@ describe Twitch::V2::Video do
   end
 end
 
-describe Twitch::V2::Videos do
+describe Twitch::V5::Videos do
   before do
     WebMocks.load_dir(fixture('video'))
   end

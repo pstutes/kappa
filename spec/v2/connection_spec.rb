@@ -10,7 +10,7 @@ describe Twitch::Connection do
   describe '#get' do
     it 'raises Arugment error if no path is specified' do
       expect {
-        c = Twitch::V2::Connection.new('client_id')
+        c = Twitch::V5::Connection.new('client_id')
         content = c.get
       }.to raise_error(ArgumentError)
     end
@@ -20,7 +20,7 @@ describe Twitch::Connection do
         .to_return(:body => '"Invalid JSON')
 
       expect {
-        c = Twitch::V2::Connection.new('client_id')
+        c = Twitch::V5::Connection.new('client_id')
         json = c.get('/test')
       }.to raise_error(Twitch::Error::FormatError)
     end
@@ -34,7 +34,7 @@ describe Twitch::Connection do
 
       error = false
       begin
-        c = Twitch::V2::Connection.new('client_id')
+        c = Twitch::V5::Connection.new('client_id')
         json = c.get('/test')
       rescue Twitch::Error::FormatError => e
         error = true
@@ -55,7 +55,7 @@ describe Twitch::Connection do
 
       error = false
       begin
-        c = Twitch::V2::Connection.new('client_id')
+        c = Twitch::V5::Connection.new('client_id')
         json = c.get('/test')
       rescue Twitch::Error::ClientError => e
         error = true
@@ -76,7 +76,7 @@ describe Twitch::Connection do
 
       error = false
       begin
-        c = Twitch::V2::Connection.new('client_id')
+        c = Twitch::V5::Connection.new('client_id')
         json = c.get('/test')
       rescue Twitch::Error::ServerError => e
         error = true
