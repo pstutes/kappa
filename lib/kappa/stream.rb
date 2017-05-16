@@ -1,6 +1,6 @@
 require 'cgi'
 
-module Twitch::V2
+module Twitch::V5
   # Streams are video broadcasts that are currently live. They belong to a user and are part of a channel.
   # @see Streams#get Streams#get
   # @see Streams#find Streams#find
@@ -40,7 +40,7 @@ module Twitch::V2
     # @deprecated This attribute is not present in the V3 API.
     # @return [String] The broadcasting software used for this stream.
     attr_reader :broadcaster
-    
+
     # @example
     #   "Super Meat Boy"
     # @return [String] The name of the game currently being streamed.
@@ -66,7 +66,7 @@ module Twitch::V2
     attr_reader :channel
 
     # @example
-    #   "http://www.twitch.tv/lethalfrag" 
+    #   "http://www.twitch.tv/lethalfrag"
     # @return [String] The URL for this stream.
     attr_reader :url
   end
