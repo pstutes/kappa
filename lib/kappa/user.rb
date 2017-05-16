@@ -148,11 +148,11 @@ module Twitch::V5
     # @param user_name [String] The name of the user to get. This is the same as the channel or stream name.
     # @see https://github.com/justintv/Twitch-API/blob/master/v2_resources/users.md#get-usersuser GET /users/:user
     # @return [User] A valid `User` object if the user exists, `nil` otherwise.
-    def get(user_name)
-      name = CGI.escape(user_name)
+    def get(user_list)
       Twitch::Status.map(404 => nil) do
-        json = @query.connection.get("users/#{name}")
-        User.new(json, @query)
+        json = @query.connection.get("users/?login=#{user_list.join(',')}")
+        return json['users']
+        # User.new(json, @query)
       end
     end
   end
